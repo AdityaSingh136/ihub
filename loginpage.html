@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="style2.css">
+  <style>
+    .watermark-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background-image: url("pic.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.2;
+      pointer-events: none;
+      background-position: center center;
+    }
+  </style>
+</head>
+<body>
+  <div class="watermark-overlay"></div>
+
+  <div class="login-form">
+    <div class="border">
+      <h2 class="login">Login</h2>
+      <h4>Please sign in to continue</h4>
+      <input type="text" class="usernamebox" placeholder="Enter Username" name="Username" required>
+      <div class="pwbox-wrapper">
+        <div class="password-container">
+          <span class="password-toggle" onclick="togglePasswordVisibility()">👁️</span>
+          <input type="password" class="pwbox" placeholder="Enter password" name="Password" required>
+        </div>
+      </div>
+      <button type="submit" class="btn" onclick="myfunction()" id="btnpush"><b>Login</b></button>
+      <div class="hh"><h4 class="acnt">Don't have an account?</h4>
+      <a href="register.html">Register</a></div>
+    </div>
+  </div>
+
+  <div class="picture-loop">
+    <img src="picture1.jpg" alt="Image">
+    <img src="picture2.jpg" alt="Image">
+    <img src="picture3.jpg" alt="Image">
+    <img src="picture4.jpg" alt="Image">
+    <img src="picture5.jpg" alt="Image">
+    <img src="picture6.jpg" alt="Image">
+    <img src="picture7.jpg" alt="Image">
+    <img src="picture8.jpg" alt="Image">
+    <img src="picture9.jpg" alt="Image">
+    <img src="picture10.jpg" alt="Image">
+    <img src="picture11.jpg" alt="Image">
+  </div>
+  
+  <div class="explore-button-container">
+    <a href="https://www.iiit.ac.in/" class="explore-button" target="_blank">Explore More -></a>
+  </div>
+
+  <script>
+    const images = document.querySelectorAll(".picture-loop img");
+    let currentIndex = 0;
+
+    function showNextImage() {
+      images[currentIndex].style.opacity = "0";
+      currentIndex = (currentIndex + 1) % images.length;
+      images[currentIndex].style.opacity = "1";
+    }
+
+    images[currentIndex].style.opacity = "1";
+    setInterval(showNextImage, 3000);
+
+    function togglePasswordVisibility() {
+      const pwbox = document.querySelector(".pwbox");
+      const passwordToggle = document.querySelector(".password-toggle");
+      pwbox.type = pwbox.type === "password" ? "text" : "password";
+      passwordToggle.textContent = pwbox.type === "password" ? "👁️" : "👁️‍🗨️";
+    }
+  </script>
+</body>
+</html>
